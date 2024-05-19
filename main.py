@@ -1,4 +1,5 @@
 from pygame import *
+from random import randint
 init()
 
 class GameSprite(sprite.Sprite):
@@ -48,7 +49,7 @@ FPS = 60
 
 rocket1 = Player('rocket.png', 30, 200, 50, 150, 4)
 rocket2 = Player('rocket.png', 520, 200, 50, 150, 4)
-ball = GameSprite('tennis ball.png', 200, 200, 50, 50, 4)
+ball = GameSprite('tennis ball.png', randint(150, 350), randint(150, 350), 50, 50, 4)
 
 y_speed = 3
 x_speed = 3
@@ -85,5 +86,13 @@ while game:
         rocket1.reset()
         rocket2.reset()
         ball.reset()
+    else:
+        finish = False
+        time.delay(10000)
+        window.fill(back)
+        rocket1.rect.y = 200
+        rocket2.rect.y = 200
+        ball.rect.y = randint(150, 350)
+        ball.rect.x = randint(150, 350)
     display.update()
     clock.tick(FPS)
